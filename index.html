@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 Un correo para ti by Aleja 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to bottom, #fff0f5, #ffe4ec);
+  margin: 0;
+  text-align: center;
+  color: #333;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.screen {
+  display: none;
+  padding: 40px 20px;
+  animation: fadeIn 0.8s ease;
+}
+
+.active {
+  display: block;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.main-img {
+  width: 260px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.main-img:hover {
+  transform: scale(1.08);
+}
+
+.card {
+  background: repeating-linear-gradient(
+    white,
+    white 28px,
+    #e3e3e3 29px
+  );
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  animation: fadeIn 1s ease;
+}
+
+.card h3 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2em;
+}
+
+.card p {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.3em;
+  line-height: 1.6;
+}
+
+.return-btn {
+  margin-top: 25px;
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #ff4f81;
+  color: white;
+  transition: 0.3s;
+}
+
+.return-btn:hover {
+  background-color: #ff2a66;
+}
+
+/* corazones flotando */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 0.7; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.95);}
+  to {opacity: 1; transform: scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="screen active" id="screen1">
+  <h2>Hola, te llegó un correo 💌</h2>
+  <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" class="main-img" onclick="nextScreen(2)">
+</div>
+
+<div class="screen" id="screen2">
+  <h2>Es una cartita para ti 💖</h2>
+  <img src="https://cdn-icons-png.flaticon.com/512/2099/2099199.png" class="main-img" onclick="nextScreen(3)">
+</div>
+
+<div class="screen" id="screen3">
+  <h2>Ábrela ✨</h2>
+  <img src="https://cdn-icons-png.flaticon.com/512/561/561188.png" class="main-img" onclick="nextScreen(4)">
+</div>
+
+<div class="screen" id="screen4">
+  <div class="card">
+    <h3>Querido Sebas,</h3>
+
+    <p>
+    Quería empezar esta carta agredeciendote el hecho de estar 
+    en mi vida, solo tu presencia ilumina mis días, me has demostrado
+    tanto en tan poco tiempo, que solo puedo detenerme a ver el panorama
+    y sentirme feliz de que al fin la vida nos haya juntado, me gusta pensar
+    que Dios debe estar ahí arriba viendonos y diciendo, al fin se juntaron estos dos.
+    </p>
+
+    <p>
+    Me encanta tu risa, lo divertido que eres, me sorprende cómo eres capaz de controlar
+    mis berrinchitos tan rápido, amo que hayas descargado el valo solo para pasar más tiempo conmigo. 
+    Amo ver como estas pendiente de mis publicaciones y saber que genuinamente te importa conocerme. A veces pienso
+    en ti sin motivo, solo porque sí, y
+    me descubro sonriendo, tu completas mis días y haces que todo se sienta y vea mucho más lindo, las horas contigo
+    se sienten como minutos. Tenía tanto tiempo de abrir mi corazón porque ya en varias ocasiones ha
+    sido lastimado, pero contigo todo se siente tan cómodo, tan lindo, tan irreal aveces siento que 
+    estoy viviendo en un sueño y uno de mis miedos ahora es despertar y no encontrarte.
+    </p>
+
+    <p>
+    Eres alguien demasiado importante para mi. Que admiro, 
+    quiero y te convertiste en mi persona favorita.
+    </p>
+
+    <p>Con mucho amor,</p>
+    <p>Aleja 💌</p>
+
+  </div>
+
+  <button class="return-btn" onclick="nextScreen(1)">🔙 Volver al inicio</button>
+</div>
+
+<script>
+function nextScreen(num) {
+  const current = document.querySelector(".screen.active");
+  if (current) current.classList.remove("active");
+  document.getElementById("screen" + num).classList.add("active");
+}
+
+/* generar corazones */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}, 800);
+</script>
+
+</body>
+</html>
